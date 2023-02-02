@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Webcam</title>
+</head>
+<body>
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+<!-- Crie um elemento de vídeo -->
+
+<div id="fundo">
+  <video id="webcam" width="640" height="480" autoplay></video></div>
+  <p>ToqueReflexo</p>
+<script>
+  // Obtém o elemento de vídeo
+  const video = document.getElementById("webcam");
+
+  // Solicita acesso à webcam
+  navigator.mediaDevices.getUserMedia({ video: true})
+    .then(function(stream) {
+      // Adiciona o fluxo de vídeo ao elemento de vídeo
+      video.srcObject = stream;
+    })
+    .catch(function(error) {
+      console.error("Erro ao acessar a webcam: ", error);
+    });
+</script>
+<script>
+const colorDiv = document.getElementById("fundo");
+let colors = ["red", "blue", "green", "yellow", "purple", "orange"];
+let index = 0;
+
+setInterval(function() {
+  colorDiv.style.backgroundColor = colors[index];
+  index = (index + 1) % colors.length;
+}, 5000);
+
+</script>
+<style>
+  #webcam {
+    position: absolute;
+    z-index: 1;
+    left: 27px;
+    top: 27px;
+  }
+  #fundo {
+    border-radius: 10px;
+    transition: background-color 10s ease;
+    width: 680px; 
+    height: 595px; 
+    background-color: red; 
+    align-items: center; 
+    justify-content: center;
+    background-image: url(fundodofundo.png);
+    
+    
+  }
+  p {
+    font-family: "Coolvetica", sans-serif;
+    position: absolute;
+    font-size: 60px;
+    color: white;
+    top: 450px;
+    left: 170px;
+    z-index: 2;
+    letter-spacing: 1px;
+    animation: textoespichando 10s infinite ease;
+}
+
+     
+@keyframes textoespichando {
+  0% {
+    color: white;
+    left: 170px;
+  }
+  25% {
+    letter-spacing: 1px;
+    left: 170px;
+  }
+  50% {
+    letter-spacing: 30px;
+    left: 20px;
+  }
+  70% {
+    letter-spacing: 30px;
+    left: 20px;
+  }
+  80% {
+    letter-spacing: 1px;
+    left: 170px;
+  }
+}
+body {
+  width: 680px; 
+  height: 580px; 
+}
+html {
+  width: 680px; 
+  height: 580px; 
+}
+</style>
+<script>
+  const div = document.getElementById("fundo");
+  let colorIndex = 0;
+  const color = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+
+  setInterval(function() {
+    div.style.backgroundImage = color[colorIndex];
+    colorIndex = (colorIndex + 1) % color.length;
+  }, 1000);
+</script>
+</body>
+</html>
