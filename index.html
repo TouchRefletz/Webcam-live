@@ -12,22 +12,8 @@
 <!-- Crie um elemento de vídeo -->
 
 <div id="fundo">
-  <video id="webcam" width="640" height="480" autoplay></video></div>
+  </div>
   <p>ToqueReflexo</p>
-<script>
-  // Obtém o elemento de vídeo
-  const video = document.getElementById("webcam");
-
-  // Solicita acesso à webcam
-  navigator.mediaDevices.getUserMedia({ video: true})
-    .then(function(stream) {
-      // Adiciona o fluxo de vídeo ao elemento de vídeo
-      video.srcObject = stream;
-    })
-    .catch(function(error) {
-      console.error("Erro ao acessar a webcam: ", error);
-    });
-</script>
 <script>
 const colorDiv = document.getElementById("fundo");
 let colors = ["red", "blue", "green", "yellow", "purple", "orange"];
